@@ -13,6 +13,7 @@ import CropRecommendations from "./pages/CropRecommendations";
 import Settings from "./pages/Settings";
 import WaterManagement from "./pages/WaterManagement";
 import SupplyChain from "./pages/SupplyChain";
+import Weather from "./pages/Weather";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/maps" element={<Maps />} />
           <Route path="/soil" element={<SoilAnalytics />} />
+          <Route path="/weather" element={<Weather />} />
           <Route path="/crop-recommendations" element={<CropRecommendations />} />
           <Route path="/water" element={<WaterManagement />} />
           <Route path="/supply-chain" element={<SupplyChain />} />

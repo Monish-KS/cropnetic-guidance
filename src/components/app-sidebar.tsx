@@ -8,7 +8,8 @@ import {
   Sprout, 
   Store, 
   Settings,
-  FileBarChart
+  FileBarChart,
+  CloudSun
 } from "lucide-react";
 
 import { AgriSenseLogo } from "@/components/agrisense-logo";
@@ -17,8 +18,8 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -59,6 +60,14 @@ export function AppSidebar() {
                   <Link to="/soil" className="flex gap-2">
                     <FileBarChart />
                     <span>Soil Analytics</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link to="/weather" className="flex gap-2">
+                    <CloudSun />
+                    <span>Weather</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
