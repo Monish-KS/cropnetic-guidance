@@ -61,6 +61,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				agrisense: {
+					primary: '#0e8c3e',
+					secondary: '#95d5a7',
+					light: '#eaf5ec',
+					dark: '#065926',
+					accent: '#4caf50',
+					warning: '#f9a825',
+					danger: '#e53935',
+					success: '#43a047',
+					info: '#1e88e5',
+					gray: '#f0f4f5'
 				}
 			},
 			borderRadius: {
