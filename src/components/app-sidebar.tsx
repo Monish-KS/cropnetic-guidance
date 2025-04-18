@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { 
   Home, 
@@ -63,25 +64,17 @@ export function AppSidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link to="/weather" className="flex gap-2">
-                    <Sun />
-                    <span>Weather</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link to="/crops" className="flex gap-2">
-                    <Sprout />
-                    <span>Crop Recommendations</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
                   <Link to="/water" className="flex gap-2">
                     <Droplets />
                     <span>Water Management</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link to="/crop-recommendations" className="flex gap-2">
+                    <Sprout />
+                    <span>Crop Recommendations</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +11,8 @@ import SoilAnalytics from "./pages/SoilAnalytics";
 import NotFound from "./pages/NotFound";
 import CropRecommendations from "./pages/CropRecommendations";
 import Settings from "./pages/Settings";
+import WaterManagement from "./pages/WaterManagement";
+import SupplyChain from "./pages/SupplyChain";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +28,8 @@ const App = () => (
           <Route path="/maps" element={<Maps />} />
           <Route path="/soil" element={<SoilAnalytics />} />
           <Route path="/crop-recommendations" element={<CropRecommendations />} />
+          <Route path="/water" element={<WaterManagement />} />
+          <Route path="/supply-chain" element={<SupplyChain />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
