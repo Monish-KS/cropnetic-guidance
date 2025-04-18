@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Maps from "./pages/Maps";
 import SoilAnalytics from "./pages/SoilAnalytics";
 import NotFound from "./pages/NotFound";
+import CropRecommendations from "./pages/CropRecommendations";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +24,8 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/maps" element={<Maps />} />
           <Route path="/soil" element={<SoilAnalytics />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/crop-recommendations" element={<CropRecommendations />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
