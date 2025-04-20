@@ -1,8 +1,8 @@
-
 import { Layout } from "@/components/layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MapPin, Store, Truck, ShoppingBag, Package } from "lucide-react";
+import { TractorCanvas } from "@/components/3d/TractorModel";
 
 const suppliers = [
   { name: "Akshar Seeds Ltd.", type: "Seeds", distance: "5.2 km", contact: "+91 9876543210", rating: 4.5, inventory: "Rice, Wheat, Cotton seeds" },
@@ -24,6 +24,10 @@ export default function SupplyChain() {
       <div className="container mx-auto">
         <h1 className="text-3xl font-bold mb-6">Agricultural Supply Chain</h1>
         
+        <div className="mb-6">
+          <TractorCanvas />
+        </div>
+
         <div className="grid gap-6 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-2">
