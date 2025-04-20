@@ -27,22 +27,22 @@ function Tractor() {
         </mesh>
         
         {/* Front wheels */}
-        <mesh position={[-0.7, -0.2, 0.6]}>
-          <cylinderGeometry args={[0.4, 0.4, 0.3, 32]} rotation={[Math.PI / 2, 0, 0]} />
+        <mesh position={[-0.7, -0.2, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.4, 0.4, 0.3, 32]} />
           <meshStandardMaterial color="#1f2937" />
         </mesh>
-        <mesh position={[-0.7, -0.2, -0.6]}>
-          <cylinderGeometry args={[0.4, 0.4, 0.3, 32]} rotation={[Math.PI / 2, 0, 0]} />
+        <mesh position={[-0.7, -0.2, -0.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.4, 0.4, 0.3, 32]} />
           <meshStandardMaterial color="#1f2937" />
         </mesh>
         
         {/* Back wheels (larger) */}
-        <mesh position={[0.7, -0.1, 0.6]}>
-          <cylinderGeometry args={[0.6, 0.6, 0.4, 32]} rotation={[Math.PI / 2, 0, 0]} />
+        <mesh position={[0.7, -0.1, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.6, 0.6, 0.4, 32]} />
           <meshStandardMaterial color="#1f2937" />
         </mesh>
-        <mesh position={[0.7, -0.1, -0.6]}>
-          <cylinderGeometry args={[0.6, 0.6, 0.4, 32]} rotation={[Math.PI / 2, 0, 0]} />
+        <mesh position={[0.7, -0.1, -0.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.6, 0.6, 0.4, 32]} />
           <meshStandardMaterial color="#1f2937" />
         </mesh>
       </group>
