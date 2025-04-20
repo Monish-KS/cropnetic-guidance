@@ -1,6 +1,7 @@
+
 import { Layout } from "@/components/layout";
 import { Card } from "@/components/ui/card";
-import { Cloud, CloudDrizzle, CloudLightning, CloudSun } from "lucide-react";
+import { Cloud, CloudDrizzle, CloudLightning, CloudSun, Thermometer, Wind, Droplets } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import SensorData from "@/components/weather/sensor-dashboard";
 
