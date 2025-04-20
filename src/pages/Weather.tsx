@@ -1,8 +1,8 @@
-
 import { Layout } from "@/components/layout";
 import { Card } from "@/components/ui/card";
-import { Cloud, CloudDrizzle, CloudLightning, CloudSun, Thermometer, Wind, Droplets } from "lucide-react";
+import { Cloud, CloudDrizzle, CloudLightning, CloudSun } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import SensorData from "@/components/weather/sensor-dashboard";
 
 const Weather = () => {
   return (
@@ -11,42 +11,50 @@ const Weather = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-              Weather Forecast
+              Weather & Sensor Data
             </h1>
             <p className="text-muted-foreground mt-1">Last updated: {new Date().toLocaleTimeString()}</p>
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: CloudSun, day: "Today", temp: 28, condition: "Partly Cloudy", details: "UV Index: High" },
-            { icon: CloudDrizzle, day: "Tomorrow", temp: 24, condition: "Light Rain", details: "80% precipitation" },
-            { icon: Cloud, day: "Saturday", temp: 26, condition: "Cloudy", details: "70% humidity" },
-            { icon: CloudLightning, day: "Sunday", temp: 23, condition: "Thunderstorms", details: "Strong winds" }
-          ].map((forecast, index) => (
-            <HoverCard key={forecast.day}>
-              <HoverCardTrigger asChild>
-                <Card className="p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer border-blue-100 hover:border-blue-200">
-                  <div className="flex flex-col items-center space-y-3">
-                    <div className="rounded-full bg-blue-50 p-3">
-                      <forecast.icon className="h-8 w-8 text-blue-500" />
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Sensor Readings</h2>
+          <SensorData />
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Weather Forecast</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: CloudSun, day: "Today", temp: 28, condition: "Partly Cloudy", details: "UV Index: High" },
+              { icon: CloudDrizzle, day: "Tomorrow", temp: 24, condition: "Light Rain", details: "80% precipitation" },
+              { icon: Cloud, day: "Saturday", temp: 26, condition: "Cloudy", details: "70% humidity" },
+              { icon: CloudLightning, day: "Sunday", temp: 23, condition: "Thunderstorms", details: "Strong winds" }
+            ].map((forecast, index) => (
+              <HoverCard key={forecast.day}>
+                <HoverCardTrigger asChild>
+                  <Card className="p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer border-blue-100 hover:border-blue-200">
+                    <div className="flex flex-col items-center space-y-3">
+                      <div className="rounded-full bg-blue-50 p-3">
+                        <forecast.icon className="h-8 w-8 text-blue-500" />
+                      </div>
+                      <h3 className="font-semibold text-lg">{forecast.day}</h3>
+                      <p className="text-3xl font-bold text-blue-600">{forecast.temp}°C</p>
+                      <p className="text-sm text-muted-foreground">{forecast.condition}</p>
                     </div>
-                    <h3 className="font-semibold text-lg">{forecast.day}</h3>
-                    <p className="text-3xl font-bold text-blue-600">{forecast.temp}°C</p>
-                    <p className="text-sm text-muted-foreground">{forecast.condition}</p>
+                  </Card>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-80">
+                  <div className="flex justify-between space-x-4">
+                    <div>
+                      <h4 className="text-sm font-semibold">{forecast.day}'s Details</h4>
+                      <p className="text-sm text-muted-foreground mt-1">{forecast.details}</p>
+                    </div>
                   </div>
-                </Card>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-80">
-                <div className="flex justify-between space-x-4">
-                  <div>
-                    <h4 className="text-sm font-semibold">{forecast.day}'s Details</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{forecast.details}</p>
-                  </div>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
-          ))}
+                </HoverCardContent>
+              </HoverCard>
+            ))}
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
