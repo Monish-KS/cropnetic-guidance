@@ -1,8 +1,10 @@
+
 import { Layout } from "@/components/layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MapPin, Store, Truck, ShoppingBag, Package } from "lucide-react";
 import { TractorCanvas } from "@/components/3d/TractorModel";
+import { useState, useEffect } from "react";
 
 const suppliers = [
   { name: "Akshar Seeds Ltd.", type: "Seeds", distance: "5.2 km", contact: "+91 9876543210", rating: 4.5, inventory: "Rice, Wheat, Cotton seeds" },
@@ -19,13 +21,38 @@ const markets = [
 ];
 
 export default function SupplyChain() {
+  const [show3D, setShow3D] = useState(true);
+  
+  // Handle potential 3D loading errors
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // If loading takes too long, we'll hide the 3D component
+      const canvas = document.querySelector('canvas');
+      if (!canvas) {
+        setShow3D(false);
+      }
+    }, 5000); // Give it 5 seconds to load
+    
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <Layout>
       <div className="container mx-auto">
         <h1 className="text-3xl font-bold mb-6">Agricultural Supply Chain</h1>
         
         <div className="mb-6">
-          <TractorCanvas />
+          {show3D ? (
+            <TractorCanvas />
+          ) : (
+            <div className="h-[400px] w-full rounded-lg overflow-hidden bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+              <div className="text-center p-6">
+                <div className="text-5xl mb-4">🚜</div>
+                <h3 className="text-xl font-medium mb-2">Supply Chain Management</h3>
+                <p className="text-gray-500">Connecting farmers with suppliers and markets</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="grid gap-6 md:grid-cols-4">
