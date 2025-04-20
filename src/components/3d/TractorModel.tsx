@@ -1,9 +1,9 @@
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 
-// Simplified tractor component with fewer polygons and optimized rendering
+// Extremely simplified tractor component to reduce loading time and resource usage
 function Tractor() {
   const [hovered, setHovered] = useState(false);
 
@@ -13,62 +13,85 @@ function Tractor() {
       onPointerOut={() => setHovered(false)}
       scale={hovered ? 1.1 : 1}
     >
-      {/* Simplified tractor shape with fewer geometries */}
+      {/* Simplified tractor with fewer elements */}
       <group position={[0, 0, 0]}>
-        {/* Tractor body - simplified */}
+        {/* Body */}
         <mesh position={[0, 0.5, 0]}>
           <boxGeometry args={[2, 1, 1.5]} />
           <meshStandardMaterial color="#2563eb" />
         </mesh>
         
-        {/* Cabin - simplified */}
+        {/* Cabin */}
         <mesh position={[0.5, 1.2, 0]}>
           <boxGeometry args={[1, 0.8, 1.2]} />
           <meshStandardMaterial color="#1e40af" />
         </mesh>
         
-        {/* Wheels - reduced detail */}
         {/* Front wheels */}
-        <mesh position={[-0.7, -0.2, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.4, 0.4, 0.3, 16]} />
+        <mesh position={[-0.7, -0.2, 0.6]}>
+          <cylinderGeometry args={[0.4, 0.4, 0.3, 8]} />
           <meshStandardMaterial color="#1f2937" />
+          <group rotation={[Math.PI / 2, 0, 0]} />
         </mesh>
-        <mesh position={[-0.7, -0.2, -0.6]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.4, 0.4, 0.3, 16]} />
+        <mesh position={[-0.7, -0.2, -0.6]}>
+          <cylinderGeometry args={[0.4, 0.4, 0.3, 8]} />
           <meshStandardMaterial color="#1f2937" />
+          <group rotation={[Math.PI / 2, 0, 0]} />
         </mesh>
         
-        {/* Back wheels (larger) */}
-        <mesh position={[0.7, -0.1, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.6, 0.6, 0.4, 16]} />
+        {/* Back wheels */}
+        <mesh position={[0.7, -0.1, 0.6]}>
+          <cylinderGeometry args={[0.6, 0.6, 0.4, 8]} />
           <meshStandardMaterial color="#1f2937" />
+          <group rotation={[Math.PI / 2, 0, 0]} />
         </mesh>
-        <mesh position={[0.7, -0.1, -0.6]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.6, 0.6, 0.4, 16]} />
+        <mesh position={[0.7, -0.1, -0.6]}>
+          <cylinderGeometry args={[0.6, 0.6, 0.4, 8]} />
           <meshStandardMaterial color="#1f2937" />
+          <group rotation={[Math.PI / 2, 0, 0]} />
         </mesh>
       </group>
     </mesh>
   );
 }
 
-// Fallback component to display when 3D content is loading or fails
+// Simple fallback component for 3D content
 function FallbackComponent() {
   return (
     <div className="flex items-center justify-center h-full w-full bg-gradient-to-b from-blue-50 to-white">
       <div className="text-center">
-        <div className="animate-pulse">
+        <div>
           <div className="h-24 w-24 mx-auto mb-4 text-blue-500">
             🚜
           </div>
         </div>
-        <p className="text-gray-500">Loading 3D tractor model...</p>
+        <p className="text-gray-500">Agricultural Equipment</p>
       </div>
     </div>
   );
 }
 
 export function TractorCanvas() {
+  const [showFallback, setShowFallback] = useState(false);
+  
+  // Set a timeout to show the fallback component if 3D content doesn't load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Check if canvas exists (3D content loaded)
+      const canvas = document.querySelector('canvas');
+      if (!canvas) {
+        setShowFallback(true);
+      }
+    }, 2000); // 2 seconds timeout
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
+  // If fallback is shown, don't attempt to render 3D content
+  if (showFallback) {
+    return <FallbackComponent />;
+  }
+  
   return (
     <div className="h-[400px] w-full rounded-lg overflow-hidden bg-gradient-to-b from-blue-50 to-white">
       <Suspense fallback={<FallbackComponent />}>
